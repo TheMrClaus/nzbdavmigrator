@@ -1,14 +1,11 @@
 services:
-  nzbdav-migrator:
-    image: ghcr.io/themrclaus/nzbdavmigrator:latest
-    container_name: nzbdav-migrator
-    volumes:
-      # Mount the nzbdav database (read-only source data)
-      - /opt/nzbdav/db.sqlite:/app/nzbdav_source.sqlite:ro
-      # Mount config and status files (persistent app data)
-      - ./data:/app/data
-    environment:
-      - TZ=Europe/Madrid
-      # Point to the mounted nzbdav database
-      - NZB_DB=/app/nzbdav_source.sqlite
-    restart: unless-stopped
+ nzbdav-migrator:
+  image: ghcr.io/themrclaus/nzbdavmigrator:latest
+  container_name: nzbdav-migrator
+  volumes:
+    - /opt/nzbdav/db.sqlite:/app/nzbdav_source.sqlite:ro       # Mount the nzbdav database (read-only source data)
+    - ./data:/app/data                                         # Mount config and status files (persistent app data)
+  environment:
+    - TZ=Europe/Madrid
+    - NZB_DB=/app/nzbdav_source.sqlite                         # Point to the mounted nzbdav database
+  restart: unless-stopped
