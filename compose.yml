@@ -1,10 +1,12 @@
 services:
   nzbdav-migrator:
-    build:
-      context: .
-      args:
-        USER_ID: 1000
-        GROUP_ID: 1000
+    image: ghcr.io/themrclaus/nzbdavmigrator:latest
+    # Uncomment to build locally instead of pulling from GHCR
+    # build:
+    #   context: .
+    #   args:
+    #     USER_ID: 1000
+    #     GROUP_ID: 1000
     container_name: nzbdav-migrator
     volumes:
       # Mount the nzbdav database (read-only source data)
@@ -15,7 +17,7 @@ services:
       - TZ=Europe/Madrid
       # Point to the mounted nzbdav database
       - NZB_DB=/app/nzbdav_source.sqlite
-      # Pre-configure Radarr/Sonarr (optional - can also be set through the UI
+      # Pre-configure Radarr/Sonarr (optional - can also be set through the UI)
       # - RADARR_URL=http://radarr:7878
       # - RADARR_API_KEY=your_api_key_here
       # - SONARR_URL=http://sonarr:8989

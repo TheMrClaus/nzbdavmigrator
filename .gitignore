@@ -45,6 +45,7 @@ exported_nzbs/
 
 # Docker volumes and runtime
 .dockerignore
+compose.yml
 
 # Logs
 logs/
