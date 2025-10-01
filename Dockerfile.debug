@@ -1,0 +1,18 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Copy minimal files
+COPY simple_web.py .
+
+# Create a non-root user
+RUN useradd -m -u 1000 nzbuser
+
+# Create data directory with proper ownership
+RUN mkdir -p /app/data && chown -R nzbuser:nzbuser /app
+
+USER nzbuser
+
+EXPOSE 9999
+
+CMD ["python3", "simple_web.py"]

@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Database files (runtime/generated)
+*.db
+*.sqlite
+*.db-shm
+*.db-wal
+nzbdav_status.db
+nzbdav_source.sqlite
+
+# Data directory (persistent app data)
+data/
+sessions/
+
+# Exported files
+exported_nzbs/
+*.nzb
+
+# Docker volumes and runtime
+.dockerignore
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment files with secrets
+.env
+.env.local
+*.secret
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Session files
+.claude/
+
+# AI conversation logs
+AGENTS.md
+CLAUDE.md
+CLAUDE.sessions.md
+GEMINI.md

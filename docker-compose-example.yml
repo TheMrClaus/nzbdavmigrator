@@ -1,0 +1,18 @@
+services:
+  nzbdav-migrator:
+    build:
+      context: .
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
+    container_name: nzbdav-migrator
+    volumes:
+      # Mount the nzbdav database (read-only source data)
+      - /opt/nzbdav/db.sqlite:/app/nzbdav_source.sqlite:ro
+      # Mount config and status files (persistent app data)
+      - ./data:/app/data
+    environment:
+      - TZ=Europe/Madrid
+      # Point to the mounted nzbdav database
+      - NZB_DB=/app/nzbdav_source.sqlite
+    restart: unless-stopped
