@@ -14,7 +14,7 @@ The NZBDAVMigrator reads from your existing nzbdav SQLite database to get the li
 
 ## Docker Compose (Recommended)
 
-  ```
+```
 services:
   nzbdav-migrator:
     image: ghcr.io/themrclaus/nzbdavmigrator:latest
