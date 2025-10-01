@@ -14,10 +14,18 @@ The NZBDAVMigrator reads from your existing nzbdav SQLite database to get the li
 
 ## Docker Compose (Recommended)
 
-The `docker-compose.yml` file includes:
-- Automatic container rebuild
-- Persistent data storage
-- Environment variable configuration
+  ```services:
+  nzbdav-migrator:
+    image: ghcr.io/themrclaus/nzbdavmigrator:latest
+    container_name: nzbdav-migrator
+    volumes:
+      - /opt/nzbdav/db.sqlite:/app/nzbdav_source.sqlite:ro       # Mount the nzbdav database (read-only source data)
+      - ./data:/app/data                                         # Mount config and status files (persistent app data)
+    environment:
+      - TZ=Europe/Madrid
+      - NZB_DB=/app/nzbdav_source.sqlite                         # Point to the mounted nzbdav database
+    restart: unless-stopped
+```
 
 ## Networking
 
