@@ -1,10 +1,6 @@
 services:
   nzbdav-migrator:
-    build:
-      context: .
-      args:
-        USER_ID: 1000
-        GROUP_ID: 1000
+    image: ghcr.io/themrclaus/nzbdavmigrator:latest
     container_name: nzbdav-migrator
     volumes:
       # Mount the nzbdav database (read-only source data)
